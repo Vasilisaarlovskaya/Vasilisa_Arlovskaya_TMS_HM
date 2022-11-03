@@ -3,18 +3,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int i = 0;
-        System.out.println("Введите число, пожалуйста");
         Scanner scanner = new Scanner(System.in);
-        int chislo = scanner.nextInt();
-        if (0 < chislo & chislo < 15) {
+
+        System.out.println("Введите число, пожалуйста");
+        int number = scanner.nextInt();
+        if (0 < number && number < 15) {
             i = 1;
             System.out.println("Группа " + i);
         } else
-        if (chislo >= 15 & chislo < 30) {
+        if (number >= 15 & number < 30) {
             i = 2;
             System.out.println("Группа " + i);
         } else
-        if (chislo >= 30) {
+        if (number >= 30) {
             i = 3;
             System.out.println("Группа " + i);
         } else
@@ -30,6 +31,5 @@ public class Main {
             System.out.println("Я не так знаменит, чтобы давить людей безнаказанно. ");
             System.out.println("Не бейте меня!... я предам кого угодно. (Бендер)");
         }
-
     }
 }
