@@ -1,3 +1,5 @@
+package Lesson5;
+
 import java.util.Arrays;
 
 public class Main {
@@ -63,25 +65,20 @@ public class Main {
 Не доделано!
 */
         int mas4[][] = {{10, 6, 9}, {4, 8, 12}, {1, 3, 5}};
-        int ver = 0;
-        int gor = 0;
-        int n;
+        int d;
 
         System.out.println(" ");
         for (int i = 0; i < mas4.length; i++) {
             System.out.println(Arrays.toString(mas4[i]));
         }
         System.out.println("Диагональ 1: ");
-        for (int i = 0; i < mas4.length; i++) {
-            for (int j = 0; j < mas4[i].length; j++) {
-                n=j;
-                System.out.print(" " + mas4 [n][n]);
-                ver += 1;
-                gor += 1;
+        System.out.println(mas4 [0][0]);
+        System.out.println(mas4 [1][1]);
+        System.out.println(mas4 [2][2]);
+                for (int i = 0; i < mas4.length; i++) {
+            for (int j = 0+i; j < mas4[i].length; j++) {
+                System.out.print(mas4 [i][j]);
+
             }
         }
-
-
-
-
     }}
