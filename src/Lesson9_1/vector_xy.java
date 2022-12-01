@@ -42,4 +42,12 @@ public class vector_xy {
             System.out.println(INF);
             System.out.println("x = " + x + "\ny = " + y);
         }
+
+    @Override
+    public String toString() {
+        return "vector_xy{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

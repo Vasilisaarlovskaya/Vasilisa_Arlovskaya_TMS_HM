@@ -46,4 +46,13 @@ public class vector_xyz {
         System.out.println(INFORMATION);
         System.out.println("x = " + x + "\ny = " + y + "\nz = " +z);
     }
+
+    @Override
+    public String toString() {
+        return "vector_xyz{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
 }
