@@ -7,6 +7,7 @@
 package lesson10_2;
 
 public class Main {
+
     public static void main(String[] args) {
         StringBuilder outrage = new StringBuilder("MyBad");
         StringBuilder doubleWorld= new StringBuilder();
