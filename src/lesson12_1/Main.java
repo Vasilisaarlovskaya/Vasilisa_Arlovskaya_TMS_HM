@@ -16,32 +16,32 @@
 package lesson12_1;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
 
-        public static void valid (String numberDocument) throws ValidException {
-            String n = numberDocument;
-            if ((n.length() != 15) || !n.startsWith("docnum") && !n.startsWith("contract")) {
-                throw new ValidException();
-            }
-        }
+    public static void main(String[] args) throws FileNotFoundException {
 
-        public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String pathName = scanner.next();
+        Scanner scanner1 = new Scanner(new File(pathName));
 
-            Scanner scanner = new Scanner(System.in);
-            String pathName = scanner.next();
+        while (scanner1.hasNextLine()) {
+            String textfromfile = scanner1.nextLine();
 
-            Scanner scanner1 = new Scanner(new File(pathName));
-            while (scanner1.hasNextLine()) {
-                String textfromfile = scanner1.nextLine();
-                try {
-                    valid(textfromfile);
-                } catch (ValidException e) {
-                    System.out.println("Номер следующего документа не подходит по параметрам");
-                }
+            try {
                 System.out.println(textfromfile);
+                if (textfromfile.length() != 15) {
+                    throw new LengthException("Длина номера документа не подходит: ");
+                }
+                if (!textfromfile.startsWith("docnum") && (!textfromfile.startsWith("contract"))) {
+                    throw new DocnamException("Номер документа не начинается с docnum или с contract: "
+                            + textfromfile);
+                }
+            } catch (ValidException ex) {
+                System.err.println(ex.getMessage());
             }
         }
     }
+}
