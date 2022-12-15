@@ -33,7 +33,8 @@ public class Main {
             try {
                 System.out.println(textfromfile);
                 if (textfromfile.length() != 15) {
-                    throw new LengthException("Длина номера документа не подходит: ");
+                    throw new LengthException("Длина номера документа не подходит: "
+                            + textfromfile);
                 }
                 if (!textfromfile.startsWith("docnum") && (!textfromfile.startsWith("contract"))) {
                     throw new DocnamException("Номер документа не начинается с docnum или с contract: "
