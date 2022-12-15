@@ -26,23 +26,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String pathName = scanner.next();
         Scanner scanner1 = new Scanner(new File(pathName));
-
-        while (scanner1.hasNextLine()) {
-            String textfromfile = scanner1.nextLine();
-
-            try {
+        try {
+            while (scanner1.hasNextLine()) {
+                String textfromfile = scanner1.nextLine();
                 System.out.println(textfromfile);
+
                 if (textfromfile.length() != 15) {
-                    throw new LengthException("Длина номера документа не подходит: "
-                            + textfromfile);
+                    throw new LengthException("Длина номера документа не подходит: ");
                 }
-                if (!textfromfile.startsWith("docnum") && (!textfromfile.startsWith("contract"))) {
-                    throw new DocnamException("Номер документа не начинается с docnum или с contract: "
-                            + textfromfile);
-                }
-            } catch (ValidException ex) {
+                if (!textfromfile.startsWith("docnum") && !textfromfile.startsWith("contract")) {
+                        throw new StartWithException("Номер документа не начинается с docnum или с contract"); }
+            }
+        } catch(ValidException ex){
                 System.err.println(ex.getMessage());
             }
         }
     }
-}
