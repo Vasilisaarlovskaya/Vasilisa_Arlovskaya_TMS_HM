@@ -11,26 +11,20 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        StringBuilder word = new StringBuilder(scanner.nextLine());
-        ArrayList<Character> wordList = new ArrayList<>();
-        HashSet<Character> wordSet = new HashSet<>();
         HashMap <Character, Integer> wordMap = new HashMap<>();
 
-        for (int i = 0; i < word.length(); i++) {
-            wordList.add(word.charAt(i));
-            wordSet.add(word.charAt(i));
-            }
-        for (char i : wordSet) {
-            int f = 0;
-            for (char g : wordList) {
-                if (i==g) {
-                    wordMap.put(i,f+=1);
-                }
+        String wordsline = scanner.nextLine();
+        for (int i = 0; i< wordsline.length(); i ++) {
+            char ch = wordsline.charAt(i);
+            int fr = 1;
+            if (!wordMap.containsKey(ch)) {
+                wordMap.put(ch, fr);
+            } else {
+                int frr;
+                frr = wordMap.get(ch) + 1;
+                wordMap.put(ch, frr);
             }
         }
         System.out.println(wordMap);
-        for (Map.Entry <Character, Integer> item : wordMap.entrySet()){
-            System.out.println(item.getKey() + " встречается: " + item.getValue() + " раз(а)");
-        }
-
-}}
+    }
+}
