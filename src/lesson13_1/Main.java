@@ -36,7 +36,6 @@
 package lesson13_1;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -80,3 +79,4 @@ public class Main {
         lastStepOtchet.write(item.getKey() + " (комментарий: " + item.getValue() + ")\n");
     } lastStepOtchet.close();
     }}
+
