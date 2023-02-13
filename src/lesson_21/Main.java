@@ -16,25 +16,34 @@ public class Main {
 
         FileReader file = new FileReader("C:\\Users\\ADMIN\\IdeaProjects\\Vasilisa\\src\\NumberDoc");
         Scanner scan = new Scanner(file);
-        HashSet<String> numberDocument = new HashSet<>();
+        Set<String> numberDocument = new HashSet<>();
+        HashMap<String, Document> informationDocument = new HashMap<>();
         Date dateToDay = new Date();
+        String inf = "";
+        String number;
+        String typeDocument = "";
+
 
         while (scan.hasNextLine()) {
-            numberDocument.add(scan.nextLine());
-
+            number = scan.next();
+            if (!numberDocument.contains(number)) {
+                numberDocument.add(number);
+            typeDocument = scan.next();
+            inf = scan.next();
+            Document doc = new Document(number, typeDocument, inf);
+            informationDocument.put(number, doc);
+            }
         }
+
         file.close();
 
-        HashMap<String, Document> informationDocument = new HashMap<>();
-        for (String i : numberDocument) {
-            Document doc = new Document(i);
-            informationDocument.put(i, doc);
-        }
-
-        for (Map.Entry <String, Document> item : informationDocument.entrySet()){
+        for (Map.Entry<String, Document> item : informationDocument.entrySet()) {
             System.out.println("Номер документа: " + item.getKey() + "\n" +
-                    "Информация по документу: " + "\n" + item.getValue().getNumber() + " (номер)"
-                    + "\n" + item.getValue().date.format(dateToDay) + " (дата создания)" + "\n" );
+                    "Информация по документу: " + "\n" + "Номер: "+  item.getValue().getNumber() +
+                            "\n" + "Тип документа: " + item.getValue().getTypeDocument()  +
+                                "\n" + "Дата создания: "+ item.getValue().date.format(dateToDay)  +
+                                     "\n" + "Безумно важная информация: " +  item.getValue().getInf() + "\n"
+                    );
         }
     }
 }
