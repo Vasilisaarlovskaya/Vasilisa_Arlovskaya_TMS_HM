@@ -1,5 +1,6 @@
 package Lesson_21_1;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -14,8 +15,6 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        FileReader file = new FileReader("C:\\Users\\ADMIN\\IdeaProjects\\Vasilisa\\src\\NumberDoc");
-        Scanner scan = new Scanner(file);
         Set<String> numberDocument = new HashSet<>();
         HashMap<String, Document> informationDocument = new HashMap<>();
         Date dateToDay = new Date();
@@ -23,27 +22,29 @@ public class Main {
         String number;
         String typeDocument = "";
 
-
-        while (scan.hasNextLine()) {
-            number = scan.next();
-            if (!numberDocument.contains(number)) {
-                numberDocument.add(number);
-            typeDocument = scan.next();
-            inf = scan.next();
-            Document doc = new Document(number, typeDocument, inf);
-            informationDocument.put(number, doc);
+        try {
+            FileReader file = new FileReader("NumDoc");
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                number = scan.next();
+                typeDocument = scan.next();
+                inf = scan.next();
+                if (numberDocument.contains(number)) {
+                } else {
+                    Document doc = new Document(number, typeDocument, inf);
+                    informationDocument.put(number, doc);
+                }
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("Не смог найти указанный файл");
         }
 
-        file.close();
 
         for (Map.Entry<String, Document> item : informationDocument.entrySet()) {
-            System.out.println("Номер документа: " + item.getKey() + "\n" +
-                    "Информация по документу: " + "\n" + "Номер: "+  item.getValue().getNumber() +
-                            "\n" + "Тип документа: " + item.getValue().getTypeDocument()  +
-                                "\n" + "Дата создания: "+ item.getValue().date.format(dateToDay)  +
-                                     "\n" + "Безумно важная информация: " +  item.getValue().getInf() + "\n"
-                    );
+            System.out.println("Номер документа: " + item.getKey() + "\n" + "Информация по документу: " + "\n" + "Номер: " + item.getValue().getNumber() + "\n" + "Тип документа: " + item.getValue().getTypeDocument() + "\n" + "Дата создания: " + item.getValue().date.format(dateToDay) + "\n" + "Безумно важная информация: " + item.getValue().getInf() + "\n");
+
+
         }
     }
 }
+
