@@ -4,7 +4,7 @@ public class Person {
     private String name;
     private String surname;
     private String gender;
-    private String age;
+    private int age;
 
     public String getName() {
         return this.name;
@@ -18,7 +18,7 @@ public class Person {
         return this.gender;
     }
 
-    public String getAge() {
+    public int getAge() {
         return this.age;
     }
 
@@ -34,11 +34,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public Person(String name, String surname, String gender, String age) {
+    public Person(String name, String surname, String gender, int age) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
