@@ -38,12 +38,6 @@ public class Person {
         this.age = age;
     }
 
-    public Person(String name, String surname, String gender, int age) {
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
-        this.age = age;
-    }
 
     public String toString() {
         return this.name + this.surname + this.gender + this.age;

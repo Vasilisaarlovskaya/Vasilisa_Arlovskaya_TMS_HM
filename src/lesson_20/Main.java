@@ -9,10 +9,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String name = "";
-        String surname = "";
-        String gender = "";
-        int age = 0;
         int count = 0;
         int male = 0;
         int female = 0;
@@ -21,31 +17,24 @@ public class Main {
         String fname = scan.nextLine();
         ArrayList<Person> person = new ArrayList();
 
-        try {
-            FileReader file = new FileReader(fname);
+        try (FileReader file = new FileReader(fname)) {
             Scanner scanfile = new Scanner(file);
 
             while (scanfile.hasNextLine()) {
                 Scanner s = new Scanner(scanfile.nextLine());
                 s.useDelimiter(",");
-                name = s.next();
-                surname = s.next();
-                gender = s.next();
-                age = Integer.valueOf(s.next().trim());
-                Person per = new Person(name, surname, gender, age);
-                person.add(per);
+                Person per = new Person();
+                per.setName(s.next());
+                per.setSurname(s.next());
+                per.setGender(s.next());
+                per.setAge(Integer.valueOf(s.next().trim()));
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         }
         person.sort(Comparator.comparing((p) -> (p.getName() + p.getSurname())));
-        try {
-            PrintWriter delete = new PrintWriter(fname);
-        } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден");
-        }
-        try {
-            FileWriter fileWriter = new FileWriter(fname);
+
+        try (FileWriter fileWriter = new FileWriter(fname, false);) {
             for (int i = 0; i < person.size(); ++i) {
                 fileWriter.write(person.get(i).getName() + person.get(i).getSurname() + person.get(i).getGender() + " " + person.get(i).getAge());
                 fileWriter.write("\n");
@@ -54,13 +43,13 @@ public class Main {
             System.out.println("Файл не найден");
         }
         for (Person p : person) {
-            if (p.getGender().trim().equals("мужской")) {
-                male += 1;
+            if (p.getGender().equals("мужской")) {
+                male++;
             } else {
-                female += 1;
+                female++;
             }
             if (p.getAge() > 30) {
-                count += 1;
+                count++;
             }
         }
 
