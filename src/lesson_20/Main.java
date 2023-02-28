@@ -3,6 +3,7 @@ package lesson_20;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
         System.out.println("Введите путь к файлу");
         Scanner scan = new Scanner(System.in);
         String fname = scan.nextLine();
-        ArrayList<Person> person = new ArrayList();
+        List<Person> person = new ArrayList();
 
         try (FileReader file = new FileReader(fname)) {
             Scanner scanfile = new Scanner(file);
